@@ -1,14 +1,17 @@
 package com.gift.www.controller;
+
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 public class TestController {
-	
-    @GetMapping("/hello")
-    public String hello(){
-        return "hello";
 
-    }
-	
-		
+	@GetMapping("/")
+	public String hello() {
+		return "hello";
+
+	}
+
+
+
 }
