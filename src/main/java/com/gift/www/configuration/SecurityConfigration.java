@@ -19,7 +19,7 @@ public class SecurityConfigration extends WebSecurityConfigurerAdapter {
                 .csrf().disable().headers().frameOptions().disable()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/", "/assets/**", "/h2-console/**").permitAll()
+                .antMatchers("/", "/assets/**", "/h2-console/**", "/kakaologin").permitAll()
 //                .antMatchers("/api/v1/**").hasRole(Role.USER.name())
                 .anyRequest().authenticated()
                 .and()

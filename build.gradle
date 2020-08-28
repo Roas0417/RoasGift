@@ -34,4 +34,8 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// 로그인 보안 및 인증 관련 사용.
+	compile('org.springframework.boot:spring-boot-starter-oauth2-client')
+	// https://mvnrepository.com/artifact/com.google.code.gson/gson. json객체 파싱에 유용.
+	compile group: 'com.google.code.gson', name: 'gson'
 }
