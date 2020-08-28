@@ -15,7 +15,7 @@ public class SecurityConfigration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.csrf().disable().headers().frameOptions().disable().and().authorizeRequests()
-				.antMatchers("/", "/assets/**", "/h2-console/**", "/kakaologin").permitAll()
+				.antMatchers("/**", "/assets/**", "/h2-console/**", "/kakaologin").permitAll()
 //                .antMatchers("/api/v1/**").hasRole(Role.USER.name())
 				.anyRequest().authenticated().and().logout().logoutSuccessUrl("/");
 	}

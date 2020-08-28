@@ -1,6 +1,7 @@
 package com.gift.www.controller;
 
 import java.util.HashMap;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -9,22 +10,14 @@ import com.gift.www.service.KakaoLoginService;
 
 import lombok.RequiredArgsConstructor;
 
+
 @RequiredArgsConstructor
 @Controller
 public class TestController {
 
 	private final KakaoLoginService kakaoLoginService;
 
-	@GetMapping("/index")
-	public String index() {
-		return "index";
-
-	}
-
-	@GetMapping("/lists")
-	public String lists() {
-		return "listing";
-	}
+	
 
 	@GetMapping("/kakaologin")
 	public String login(@RequestParam("code") String code, HttpSession session) {
