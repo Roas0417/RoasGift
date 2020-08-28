@@ -1,6 +1,7 @@
 package com.gift.www.service;
 
 import java.io.BufferedReader;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,18 +12,27 @@ import java.util.HashMap;
 
 import org.springframework.stereotype.Service;
 
+import com.gift.www.entity.Role;
+import com.gift.www.entity.User;
+import com.gift.www.repository.UserRepository;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+
 @Service
 public class KakaoLoginService {
+
+	private final UserRepository userRepository;
 
 	public String getAccessToken(String authorize_code) {
 		String access_Token = "";
 		String refresh_Token = "";
 		String reqURL = "https://kauth.kakao.com/oauth/token";
-
+		System.out.println("authorize_code : " + authorize_code);
 		try {
 			URL url = new URL(reqURL);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -109,9 +119,13 @@ public class KakaoLoginService {
 
 			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 			String email = kakao_account.getAsJsonObject().get("email").getAsString();
+			String thumbnail_image = properties.getAsJsonObject().get("thumbnail_image").getAsString();
 
 			userInfo.put("nickname", nickname);
 			userInfo.put("email", email);
+			userInfo.put("thumbnail_image", thumbnail_image);
+
+			saveOrUpdate(userInfo);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -121,4 +135,18 @@ public class KakaoLoginService {
 		return userInfo;
 	}
 
+	private User saveOrUpdate(HashMap<String, Object> userInfo) {
+		User user = userRepository.findByEmail((String) userInfo.get("email")).map(
+				entity -> entity.update((String) userInfo.get("nickname"), (String) userInfo.get("thumbnail_image")))
+				.orElse(toEntity(userInfo));
+
+		return userRepository.save(user);
+
+	}
+
+	private User toEntity(HashMap<String, Object> userInfo) {
+		return User.builder().name((String) userInfo.get("nickname")).email((String) userInfo.get("email"))
+				.picture((String) userInfo.get("thumbnail_image")).role(Role.USER).build();
+
+	}
 }
