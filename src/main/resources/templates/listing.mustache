@@ -58,7 +58,7 @@
                         <!-- Select City items start -->
                         <div class="select-job-items2">
                             <select name="select2">
-                                <option value="">City</option>
+                                <option value="">상품명</option>
                                 <option value="">Dhaka</option>
                                 <option value="">india</option>
                                 <option value="">UK</option>
@@ -70,7 +70,7 @@
                         <!-- Select State items start -->
                         <div class="select-job-items2">
                             <select name="select2">
-                                <option value="">State</option>
+                                <option value="">브랜드</option>
                                 <option value="">Dhaka</option>
                                 <option value="">Mirpur</option>
                                 <option value="">Danmondi</option>
@@ -82,7 +82,7 @@
                         <!-- Select km items start -->
                         <div class="select-job-items2">
                             <select name="select2">
-                                <option value="">Near 1 km</option>
+                                <option value="">카테고리</option>
                                 <option value="">2 km</option>
                                 <option value="">3 km</option>
                                 <option value="">4 km</option>
@@ -101,7 +101,7 @@
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container">$150 - $300
-                                <input type="checkbox" checked="checked active">
+                                <input type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container">$300 - $500
@@ -155,134 +155,52 @@
                     <div class="col-lg-12">
                         <div class="count mb-35">
                             <span>5432 Listings are available</span>
+                            
                         </div>
                     </div>
                 </div>
                 <!--? Popular Directory Start -->
                 <div class="popular-directorya-area fix">
                         <div class="row">
+                        {{#listAll}}
                             <div class="col-lg-6">
                                 <!-- Single -->
                                 <div class="properties properties2 mb-30">
                                     <div class="properties__card">
                                         <div class="properties__img overlay1">
-                                            <a href="#"><img src="assets/img/gallery/properties1.png" alt=""></a>
+                                            <a href="#"><img src="/assets/img/gallery/properties3.png" alt=""></a>
                                             <div class="img-text">
-                                                <span>$$$</span>
-                                                <span>Closed</span>
+                                                <span>{{giftSold}}&nbsp;sold</span>
                                             </div>
                                             <div class="icon">
-                                                <img src="assets/img/gallery/categori_icon1.png" alt=""> 
+                                                <img src="/assets/img/gallery/categori_icon1.png" alt=""> 
                                             </div>
                                         </div>
                                         <div class="properties__caption">
-                                            <h3><a href="#">Urban areas</a></h3>
-                                            <p>Let's uncover the best places to eat, drink</p>
+                                            <h3><a href="/gift/detail/{{giftId}}">{{giftBrand}}&nbsp;{{giftName}}</a></h3>
+                                            <p>₩{{giftPrice}}</p>
                                         </div>
                                         <div class="properties__footer d-flex justify-content-between align-items-center">
                                             <div class="restaurant-name">
-                                                <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                                <h3>Food & Restaurant</h3>
+                                                <img src="/assets/img/gallery/restaurant-icon.png" alt="">
+                                                <h3>{{giftCategory}}</h3>
                                             </div>
                                             <div class="heart">
-                                                <img src="assets/img/gallery/heart1.png" alt="">
+                                                <img src="/assets/img/gallery/heart1.png" alt="">
+                                                <!-- 위시리스트 -->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <!-- Single -->
-                                <div class="properties properties2 mb-30">
-                                    <div class="properties__card">
-                                        <div class="properties__img overlay1">
-                                            <a href="#"><img src="assets/img/gallery/properties2.png" alt=""></a>
-                                            <div class="img-text">
-                                                <span>$$$</span>
-                                                <span>Closed</span>
-                                            </div>
-                                            <div class="icon">
-                                                <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                            </div>
-                                        </div>
-                                        <div class="properties__caption">
-                                            <h3><a href="#">Urban areas</a></h3>
-                                            <p>Let's uncover the best places to eat, drink</p>
-                                        </div>
-                                        <div class="properties__footer d-flex justify-content-between align-items-center">
-                                            <div class="restaurant-name">
-                                                <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                                <h3>Food & Restaurant</h3>
-                                            </div>
-                                            <div class="heart">
-                                                <img src="assets/img/gallery/heart1.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <!-- Single -->
-                                <div class="properties properties2 mb-30">
-                                    <div class="properties__card">
-                                        <div class="properties__img overlay1">
-                                            <a href="#"><img src="assets/img/gallery/properties3.png" alt=""></a>
-                                            <div class="img-text">
-                                                <span>$$$</span>
-                                                <span>Closed</span>
-                                            </div>
-                                            <div class="icon">
-                                                <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                            </div>
-                                        </div>
-                                        <div class="properties__caption">
-                                            <h3><a href="#">Urban areas</a></h3>
-                                            <p>Let's uncover the best places to eat, drink</p>
-                                        </div>
-                                        <div class="properties__footer d-flex justify-content-between align-items-center">
-                                            <div class="restaurant-name">
-                                                <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                                <h3>Food & Restaurant</h3>
-                                            </div>
-                                            <div class="heart">
-                                                <img src="assets/img/gallery/heart1.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <!-- Single -->
-                                <div class="properties properties2 mb-30">
-                                    <div class="properties__card">
-                                        <div class="properties__img overlay1">
-                                            <a href="#"><img src="assets/img/gallery/properties3.png" alt=""></a>
-                                            <div class="img-text">
-                                                <span>$$$</span>
-                                                <span>Closed</span>
-                                            </div>
-                                            <div class="icon">
-                                                <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                            </div>
-                                        </div>
-                                        <div class="properties__caption">
-                                            <h3><a href="#">Urban areas</a></h3>
-                                            <p>Let's uncover the best places to eat, drink</p>
-                                        </div>
-                                        <div class="properties__footer d-flex justify-content-between align-items-center">
-                                            <div class="restaurant-name">
-                                                <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                                <h3>Food & Restaurant</h3>
-                                            </div>
-                                            <div class="heart">
-                                                <img src="assets/img/gallery/heart1.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {{/listAll}}
                         </div>
                 </div>
+                <div>
+                <hr />
+                </div>
+                <button type="button" onclick="location.href='/gift/write'" class="button button-contactForm btn_1 boxed-btn"
+                            >상품 등록</button>
                 <!--? Popular Directory End -->
                 <!--Pagination Start  -->
                 <div class="pagination-area text-center">

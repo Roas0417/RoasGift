@@ -1,0 +1,139 @@
+{{>layout/header}}
+    
+ <!--? Hero Start -->
+       <!--? Hero Area Start-->
+    <div class="slider-area hero-bg3 hero-overly">
+        <div class="single-slider   slider-height2 d-flex align-items-end">
+            <div class="container">
+                <div class="directory-details-head">
+                    <section class="wantToWork-area">
+                        <div class="wants-wrapper w-padding3">
+                            <div class="row align-items-center justify-content-between">
+                                <div class="col-xl-8">
+                                  <div class="details-cap d-flex">
+                                    <div class="icon">
+                                        <img src="assets/img/gallery/categori_icon1.png" alt=""> 
+                                    </div>
+                                    <div class="properties__caption">
+                                        <h3><a href="#">Urban areas</a></h3>
+                                        <p>Let's uncover the best places to eat, drink</p>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!-- Directory Details start -->
+    <div class="directory-details pt-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                 <div class="blog_details">
+                        <h2 style="color: #2d2d2d;">
+                        {{giftList.giftBrand}}&nbsp;{{giftList.giftName}}
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₩{{giftList.giftPrice}}
+                        </h2>
+                        <ul class="blog-info-link mt-3 mb-4">
+                           <li><a href="#"><i class="fa fa-user"></i>{{giftList.giftCategory}}</a></li>
+                           <li><a href="#"><i class="fa fa-comments"></i>{{giftList.giftSold}}</a></li>
+                        </ul>
+                 </div>
+                 <div>
+                 <hr/>
+                 </div>
+                 <div class="small-tittle mb-20">
+                        <h2>Description</h2>
+                    </div>
+                    <div class="gallery-img">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <img src="/assets/img/gallery/gallery1.png" class="mb-30" alt="">
+                            </div>
+                            <div class="col-lg-6">
+                                <img src="/assets/img/gallery/gallery2.png" class="mb-30" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="directory-cap mb-40">
+                        {{giftList.giftContent}}
+                    </div>
+                    <form>
+                    <input type="hidden" id="giftId" value="{{giftList.giftId}}">
+                    <div class="form-group">
+                           <button type="button" onclick="location.href='/gift/list'" class="button button-contactForm btn_1 boxed-btn">prev</button>
+                           <button type="button" onclick="location.href='/gift/update/{{giftId}}'" class="button button-contactForm btn_1 boxed-btn">edit</button>
+                           <button type="button" id="btn-delete" class="button button-contactForm btn_1 boxed-btn">del</button>
+                        </div>
+                        </form>
+                </div>
+                <div class="col-lg-4">
+                  <div class="blog_right_sidebar">
+                     <aside class="single_sidebar_widget search_widget">
+                        <form action="#">
+                           <div class="form-group">
+                              <div class="input-group mb-3">
+                                 <input type="text" class="form-control" placeholder='Search Keyword'
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                 <div class="input-group-append">
+                                    <button class="btns" type="button"><i class="ti-search"></i></button>
+                                 </div>
+                              </div>
+                           </div>
+                           <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                              type="submit">Search</button>
+                        </form>
+                     </aside>
+                     <aside class="single_sidebar_widget post_category_widget">
+                        <h4 class="widget_title" style="color: #2d2d2d;">Category</h4>
+                        <ul class="list cat-list">
+                           <li>
+                              <a href="#" class="d-flex">
+                                 <p>Resaurant food</p>
+                                 <p>(37)</p>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="#" class="d-flex">
+                                 <p>Travel news</p>
+                                 <p>(10)</p>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="#" class="d-flex">
+                                 <p>Modern technology</p>
+                                 <p>(03)</p>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="#" class="d-flex">
+                                 <p>Product</p>
+                                 <p>(11)</p>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="#" class="d-flex">
+                                 <p>Inspiration</p>
+                                 <p>(21)</p>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="#" class="d-flex">
+                                 <p>Health Care</p>
+                                 <p>(21)</p>
+                              </a>
+                           </li>
+                        </ul>
+                     </aside>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  <div>
+   <hr/>
+  </div>
+{{>layout/footer}}
