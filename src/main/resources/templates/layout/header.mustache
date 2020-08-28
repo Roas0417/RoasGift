@@ -64,13 +64,13 @@
                         </div>          
                         <!-- Header-btn -->
                         <div class="header-btns d-none d-lg-block f-right">
-                            {{#userId}}
-				                <font color=white>Logged in as : <span id="username">{{userId}}</span></font>  
+                            {{#userEmail}}
+				                <font color=white>Logged in as : <span id="username">{{nickname}} / {{userEmail}}  <img src="{{thumbnail_image}}" width="50" height="50"/></span></font>  
 				                <a href="/logout" class="btn btn-info active" role="button">Logout</a>
-				            {{/userId}}
-                            {{^userId}}
+				            {{/userEmail}}
+                            {{^userEmail}}
 				                <a href="https://kauth.kakao.com/oauth/authorize?client_id=d73b88240351eeb7b298a4ad9b7b5f09&redirect_uri=http://localhost:8080/kakaologin&response_type=code"><img src="/assets/img/kakao_login_medium_narrow.png"/></a>
-				            {{/userId}}
+				            {{/userEmail}}
                             <a href="#" class="btn">Add Listing</a>
                         </div>
                     </div>
