@@ -48,5 +48,8 @@ public class ListApiController {
 		return giftId;
 	}
 	
-	//@GetMapping("/api/v1/gift")
+	/*@GetMapping("/api/v1/gift/{keyword}")
+	public ListResponseDto findByGiftNameOrGiftBrandContaining(@PathVariable String keyword) {
+		return listService.findByGiftNameOrGiftBrandContaining(search);
+	}*/
 }

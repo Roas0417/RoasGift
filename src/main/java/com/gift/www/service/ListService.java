@@ -1,5 +1,6 @@
 package com.gift.www.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import java.util.stream.Collectors;
@@ -58,6 +59,7 @@ public class ListService {
 				.map(ListAllResponseDto::new)
 				.collect(Collectors.toList());
 	}
+	//목록
 	
 	@Transactional
 	public void delete(Long giftId) {
@@ -66,5 +68,14 @@ public class ListService {
 						IllegalArgumentException("해당 게시글이 없습니다. id = " + giftId));
 		
 		listRepository.delete(listEntity);
+	}
+	//삭제
+	
+	@Transactional(readOnly = true)
+	public List<ListAllResponseDto> findAllSearch(String keyword) {
+		
+		return listRepository.findAllSearch(keyword).stream()
+				.map(ListAllResponseDto::new)
+				.collect(Collectors.toList());
 	}
 }

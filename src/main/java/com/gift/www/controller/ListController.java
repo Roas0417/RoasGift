@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gift.www.dto.ListResponseDto;
 import com.gift.www.service.ListService;
@@ -46,5 +47,11 @@ public class ListController {
 	@GetMapping("/gift/write")
 	public String giftWrite() {
 		return "listWrite";
+	}
+	
+	@GetMapping("/gift/search")
+	public String findByKeyword(@RequestParam String keyword, Model model) {
+		model.addAttribute("listAll", listService.findAllSearch(keyword));
+		return "listing";
 	}
 }
