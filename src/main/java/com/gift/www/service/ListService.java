@@ -1,6 +1,5 @@
 package com.gift.www.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import java.util.stream.Collectors;
@@ -8,7 +7,6 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gift.www.dto.ListAllResponseDto;
 import com.gift.www.dto.ListResponseDto;
 import com.gift.www.dto.ListSaveRequestDto;
 import com.gift.www.dto.ListUpdateRequestDto;
@@ -54,9 +52,9 @@ public class ListService {
 	//조회
 	
 	@Transactional(readOnly = true)
-	public List<ListAllResponseDto> findAllDesc() {
+	public List<ListResponseDto> findAllDesc() {
 		return listRepository.findAllDesc().stream()
-				.map(ListAllResponseDto::new)
+				.map(ListResponseDto::new)
 				.collect(Collectors.toList());
 	}
 	//목록
@@ -72,10 +70,10 @@ public class ListService {
 	//삭제
 	
 	@Transactional(readOnly = true)
-	public List<ListAllResponseDto> findAllSearch(String keyword) {
+	public List<ListResponseDto> findAllSearch(String keyword, String category) {
 		
-		return listRepository.findAllSearch(keyword).stream()
-				.map(ListAllResponseDto::new)
+		return listRepository.findAllSearch(keyword, category).stream()
+				.map(ListResponseDto::new)
 				.collect(Collectors.toList());
 	}
 }

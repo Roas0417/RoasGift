@@ -22,6 +22,7 @@ public class ListController {
 	public String index() {
 		return "index";
 	}
+	//메인
 	
 	@GetMapping("/gift/list")
 	public String giftList(Model model) {
@@ -29,6 +30,7 @@ public class ListController {
 		
 		return "listing";
 	}
+	//전체상품
 	
 	@GetMapping("/gift/detail/{giftId}")
 	public String giftDetail(@PathVariable Long giftId, Model model) {
@@ -36,6 +38,7 @@ public class ListController {
 		model.addAttribute("giftList", dto);
 		return "listDetail";
 	}
+	//조회
 	
 	@GetMapping("/gift/update/{giftId}")
 	public String giftUpdate(@PathVariable Long giftId, Model model) {
@@ -43,15 +46,18 @@ public class ListController {
 		model.addAttribute("giftList", dto);
 		return "listUpdate";
 	}
+	//수정 입력페이지
 	
 	@GetMapping("/gift/write")
 	public String giftWrite() {
 		return "listWrite";
 	}
+	//글 생성페이지
 	
 	@GetMapping("/gift/search")
-	public String findByKeyword(@RequestParam String keyword, Model model) {
-		model.addAttribute("listAll", listService.findAllSearch(keyword));
+	public String findByKeyword(@RequestParam String keyword, @RequestParam String category, Model model) {
+		model.addAttribute("listAll", listService.findAllSearch(keyword, category));
 		return "listing";
 	}
+	//검색 목록 조회
 }

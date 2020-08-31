@@ -12,13 +12,13 @@
                                 <p>Let's uncover the best places to eat, drink, and shop nearest to you.</p>
                             </div>
                             <!--Hero form -->
-                            <form action="/gift/search" class="search-box mb-100">
+                            <form action="/gift/search" method="GET" id="search" class="search-box mb-100">
                                 <div class="input-form">
                                     <input type="text" id="keyword" name="keyword" placeholder="What are you finding?">
                                 </div>
                                 <div class="select-form">
                                     <div class="select-itms">
-                                        <select name="select" id="keyword" name="keyword">
+                                        <select id="category" name="category">
                                             <option value="">-Category-</option>
                                             <option value="한식">한식</option>
                                             <option value="중식">중식</option>
@@ -32,6 +32,7 @@
                                 </div>
                                 <div class="search-form">
                                    <input type="submit" value="Search" id="submit" class="ti-search">
+                                   <a href="#" onClick="formSubmit();return false;"><i class="ti-search"></i> Search</a>
                                 </div>	
                             </form>	
                             <!-- hero category1 img -->
