@@ -12,7 +12,7 @@
                                 <p>Let's uncover the best places to eat, drink, and shop nearest to you.</p>
                             </div>
                             <!--Hero form -->
-                            <form action="/gift/search" method="GET" id="search" class="search-box mb-100">
+                            <form action="/gift/search" method="GET" id="search" name="search" class="search-box mb-100">
                                 <div class="input-form">
                                     <input type="text" id="keyword" name="keyword" placeholder="What are you finding?">
                                 </div>
@@ -31,8 +31,8 @@
                                     </div>
                                 </div>
                                 <div class="search-form">
-                                   <input type="submit" value="Search" id="submit" class="ti-search">
-                                   <a href="#" onClick="formSubmit();return false;"><i class="ti-search"></i> Search</a>
+                                   
+                                   <a href="#" onClick="document.getElementById('search').submit();"><i class="ti-search"></i> Search</a>
                                 </div>	
                             </form>	
                             <!-- hero category1 img -->
