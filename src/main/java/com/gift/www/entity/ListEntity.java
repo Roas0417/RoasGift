@@ -1,11 +1,15 @@
 package com.gift.www.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.gift.www.basetime.BaseTimeEntity;
 
@@ -51,7 +55,11 @@ public class ListEntity extends BaseTimeEntity{
 	
 	private String giftContent;
 	
-	
+	//listEntity라는 테이블 통해 연결.
+	@OneToMany(mappedBy = "listEntity")
+    private List<WishList> wishList = new ArrayList<>();
+
+
 	@Builder
 	//빌더 패턴 클래스 생성
 	//필드 값 변경의 목적과 의도를 명확히 하기 위함

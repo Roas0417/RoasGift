@@ -59,6 +59,13 @@ public class ListService {
 				.collect(Collectors.toList());
 	}
 	
+	public List<ListResponseDto> findAllDescAtLogin(Long userId){
+		
+		return listRepository.findAllDescAtLogin(userId).stream()
+				.map(ListResponseDto::new)
+				.collect(Collectors.toList());
+	}
+	
 	@Transactional
 	public void delete(Long giftId) {
 		ListEntity listEntity = listRepository.findById(giftId)

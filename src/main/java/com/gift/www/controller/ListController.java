@@ -1,5 +1,7 @@
 package com.gift.www.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
@@ -25,6 +27,15 @@ public class ListController {
 	@GetMapping("/gift/list")
 	public String giftList(Model model) {
 		model.addAttribute("listAll", listService.findAllDesc());
+		
+		return "listing";
+	}
+	
+	@GetMapping("/gift/list/logined")
+	public String giftListLOgin(Model model,HttpSession session) {
+		Long userId = (Long)session.getAttribute("userId");
+		System.out.println("userid : " + userId);
+		model.addAttribute("listAll", listService.findAllDescAtLogin(userId));
 		
 		return "listing";
 	}
