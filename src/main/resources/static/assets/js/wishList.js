@@ -1,51 +1,55 @@
-var wish = {
-    init : function () {
-        var _this = this;
-        $('.wish-save').on('click', function () {
-            _this.save();
-        });
-
- 		/*$('#btn-delete').on('click', function () {
-            _this.delete();
-        });*/
-    },
-    save : function () {
-        var data = {
-            userId: $('#userId').val(),
-            giftId: $('#giftId').val()
-        };
-
-        $.ajax({
+function saveWishList(s) {
+	
+	$('#heart'+s+' img').attr({
+		"src": "/assets/img/gallery/heart_full.png",
+		"onclick": "deleteWishList("+s+")",
+		"alt": "즐겨찾기 제거"
+	});
+	
+	var data = {
+		userId : $('#userId').val(),
+		giftId : s
+	};
+	 $.ajax({
             type: 'POST',
             url: '/api/wish',
             dataType: 'json',
             contentType:'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function() {
-            alert('즐겨찾기에 등록되었습니다.');
-            /*window.location.href = '/gift/list';*/
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
-	}/*,
-	
-    delete : function () {
-        var id = $('#giftId').val();
-
-        $.ajax({
-            type: 'DELETE',
-            url: '/api/v1/gift/'+id,
-            dataType: 'json',
-            contentType:'application/json; charset=utf-8'
-        }).done(function() {
-            alert('글이 삭제되었습니다.');
-            window.location.href = '/gift/list';
-        }).fail(function (error) {
-            alert(JSON.stringify(error));
-        });
-    }
-*/
 	
 };
 
-wish.init();
+function deleteWishList(s) {
+	
+	$('#heart'+s+' img').attr({
+		"src": "/assets/img/gallery/heart_empty.png",
+		"onclick": "saveWishList("+s+")",
+		"alt": "즐겨찾기 추가"
+	});
+	
+	var data = {
+		userId : $('#userId').val(),
+		giftId : s
+	};
+	 $.ajax({
+            type: 'DELETE',
+            url: '/api/wish',
+            dataType: 'json',
+            contentType:'application/json; charset=utf-8',
+            data: JSON.stringify(data)
+        }).done(function() {
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        });
+	
+};
+
+function notLogined(){
+	alert('로그인하여 주십시오.');
+	
+};
+

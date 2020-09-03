@@ -24,18 +24,12 @@ public class ListController {
 		return "index";
 	}
 	
-	@GetMapping("/gift/list")
-	public String giftList(Model model) {
-		model.addAttribute("listAll", listService.findAllDesc());
-		
-		return "listing";
-	}
 	
-	@GetMapping("/gift/list/logined")
+	@GetMapping("/gift/list")
 	public String giftListLOgin(Model model,HttpSession session) {
 		Long userId = (Long)session.getAttribute("userId");
 		System.out.println("userid : " + userId);
-		model.addAttribute("listAll", listService.findAllDescAtLogin(userId));
+		model.addAttribute("listAll", listService.findAllDesc(userId));
 		
 		return "listing";
 	}

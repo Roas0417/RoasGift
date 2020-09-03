@@ -8,7 +8,7 @@ import com.gift.www.entity.WishList;
 
 public interface WishListRepository extends JpaRepository<WishList, Long> {
 
-	@Query(value = "select wish_id from wish_list where user_id = :userId and gift_id = :giftId", nativeQuery = true)
-	Long findWishId(@Param("userId") String userId, @Param("giftId") String giftId);
+	@Query(value = "select wish_list_id from wish_list where user_id = :userId and gift_id = :giftId", nativeQuery = true)
+	Long findWishId(@Param("userId") Long userId, @Param("giftId") Long giftId);
 	
 }

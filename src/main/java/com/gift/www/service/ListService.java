@@ -53,18 +53,12 @@ public class ListService {
 	//조회
 	
 	@Transactional(readOnly = true)
-	public List<ListAllResponseDto> findAllDesc() {
-		return listRepository.findAllDesc().stream()
-				.map(ListAllResponseDto::new)
-				.collect(Collectors.toList());
-	}
-	
-	public List<ListResponseDto> findAllDescAtLogin(Long userId){
-		
-		return listRepository.findAllDescAtLogin(userId).stream()
+	public List<ListResponseDto> findAllDesc(Long userId) {
+		return listRepository.findAllDesc(userId).stream()
 				.map(ListResponseDto::new)
 				.collect(Collectors.toList());
 	}
+	
 	
 	@Transactional
 	public void delete(Long giftId) {
