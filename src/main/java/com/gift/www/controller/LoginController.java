@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Controller
-public class TestController {
+public class LoginController {
 
 	private final KakaoLoginService kakaoLoginService;
 
@@ -28,6 +28,7 @@ public class TestController {
 
 		// 클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
 		if (userInfo.get("email") != null) {
+			session.setAttribute("userId", userInfo.get("userId"));
 			session.setAttribute("userEmail", userInfo.get("email"));
 			session.setAttribute("nickname", userInfo.get("nickname"));
 			session.setAttribute("thumbnail_image", userInfo.get("thumbnail_image"));

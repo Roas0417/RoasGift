@@ -124,8 +124,8 @@ public class KakaoLoginService {
 			userInfo.put("nickname", nickname);
 			userInfo.put("email", email);
 			userInfo.put("thumbnail_image", thumbnail_image);
+			userInfo.put("userId", saveOrUpdate(userInfo).getUserId());
 
-			saveOrUpdate(userInfo);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -146,7 +146,7 @@ public class KakaoLoginService {
 
 	private User toEntity(HashMap<String, Object> userInfo) {
 		return User.builder().name((String) userInfo.get("nickname")).email((String) userInfo.get("email"))
-				.picture((String) userInfo.get("thumbnail_image")).role(Role.USER).build();
+				.thumbnail_image((String) userInfo.get("thumbnail_image")).role(Role.USER).build();
 
 	}
 }

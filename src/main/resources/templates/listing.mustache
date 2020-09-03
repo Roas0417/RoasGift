@@ -188,10 +188,22 @@
                                                 <img src="/assets/img/gallery/restaurant-icon.png" alt="">
                                                 <h3>{{giftCategory}}</h3>
                                             </div>
-                                            <div class="heart">
-                                                <img src="/assets/img/gallery/heart1.png" alt="">
-                                                <!-- 위시리스트 -->
+                                           	{{#userEmail}}
+                                           		{{#wishListId}}
+	                                            <div class="heart" id="heart{{giftId}}">
+	                                                <img class="wish" onclick="deleteWishList({{giftId}})" src="/assets/img/gallery/heart_full.png" alt="즐겨찾기 제거">
+                                           		{{/wishListId}}
+                                           		{{^wishListId}}
+	                                            <div class="heart" id="heart{{giftId}}">
+	                                                <img class="wish" onclick="saveWishList({{giftId}})" src="/assets/img/gallery/heart_empty.png" alt="즐겨찾기 추가" >
+                                           		{{/wishListId}}
                                             </div>
+                                            {{/userEmail}}
+                                            {{^userEmail}}
+                                            <div class="heart" id="heart{{giftId}}">
+                                                <img class="wish-save" onclick="notLogined()" src="/assets/img/gallery/heart_empty.png" alt="" >
+                                            </div>
+                                            {{/userEmail}}
                                         </div>
                                     </div>
                                 </div>

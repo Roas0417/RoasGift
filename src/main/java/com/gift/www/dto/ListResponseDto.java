@@ -15,6 +15,8 @@ public class ListResponseDto {
 	private int giftSold;
 	private String giftContent;
 	
+	private Long wishListId;
+	
 	public ListResponseDto(ListEntity listEntity) {
 		this.giftId = listEntity.getGiftId();
 		this.giftName = listEntity.getGiftName();
@@ -23,5 +25,9 @@ public class ListResponseDto {
 		this.giftPrice = listEntity.getGiftPrice();
 		this.giftSold = listEntity.getGiftSold();
 		this.giftContent = listEntity.getGiftContent();
+		
+		if(listEntity.getWishList().size() > 0) {
+		this.wishListId = listEntity.getWishList().get(0).getWishListId();
+		}
 	}
 }

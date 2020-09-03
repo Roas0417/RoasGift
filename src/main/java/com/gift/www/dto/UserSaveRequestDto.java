@@ -11,10 +11,10 @@ import lombok.NoArgsConstructor;
 public class UserSaveRequestDto {
     private String name;
     private String email;
-    private String picture;
+    private String thumbnail_image;
     
     public User toEntity() {
-        return User.builder().name(name).email(email).picture(picture).role(Role.USER).build();
+        return User.builder().name(name).email(email).thumbnail_image(thumbnail_image).role(Role.USER).build();
 
     }
 }

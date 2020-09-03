@@ -12,16 +12,24 @@ CREATE TABLE `list_entity` (
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8
 
 CREATE TABLE `user` (
-  `id` INT auto_increment,
+  `user_id` INT auto_increment,
   `nickname` varchar(45) NULL,
   `name` varchar(45) NULL,
   `profile_image` varchar(200) NULL,
   `thumnail_image` varchar(200) NULL,
-  `picture` varchar(200) NULL,
   `role` varchar(45) NULL,
   `email` varchar(45) NOT NULL,
   `phone_number` varbinary(45) NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
-drop table user
+drop table user;
+
+create table wish_list (
+wish_list_id INT auto_increment,
+user_id INT,
+  PRIMARY KEY (wish_list_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+gift_id INT,
+drop table wish_list;
