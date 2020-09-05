@@ -51,7 +51,7 @@
                     <div class="gallery-img">
                         <div class="row">
                             <div class="col-lg-6">
-                                <img src="/assets/img/gallery/gallery1.png" class="mb-30" alt="">
+                                <img src="{{giftImg.storedFilePath}}" class="mb-30">
                             </div>
                             <div class="col-lg-6">
                                 <img src="/assets/img/gallery/gallery2.png" class="mb-30" alt="">
@@ -60,6 +60,7 @@
                     </div>
                     <div class="directory-cap mb-40">
                         {{giftList.giftContent}}
+                        
                     </div>
                     <form>
                     <input type="hidden" id="giftId" value="{{giftList.giftId}}">

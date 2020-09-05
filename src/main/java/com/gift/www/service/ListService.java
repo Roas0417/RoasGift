@@ -10,10 +10,11 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.gift.www.common.FileUtils;
-import com.gift.www.dto.ImgSaveRequestDto;
+import com.gift.www.dto.ImgReqResDto;
 import com.gift.www.dto.ListResponseDto;
 import com.gift.www.dto.ListSaveRequestDto;
 import com.gift.www.dto.ListUpdateRequestDto;
+import com.gift.www.entity.ImgEntity;
 import com.gift.www.entity.ListEntity;
 import com.gift.www.repository.ImgRepository;
 import com.gift.www.repository.ListRepository;
@@ -34,7 +35,7 @@ public class ListService {
 		
 		
 		Long giftId = listRepository.save(requestDto.toEntity()).getGiftId();
-		ImgSaveRequestDto dto = fileUtils.parseFileImg(giftId, multipartHttpServletRequest);
+		ImgReqResDto dto = fileUtils.parseFileImg(giftId, multipartHttpServletRequest);
 		if(ObjectUtils.isEmpty(dto) == false) {
 			imgRepository.save(dto.toImgEntity());
 		}
@@ -67,6 +68,13 @@ public class ListService {
 		return new ListResponseDto(listEntity);
 	}
 	//조회
+	
+	@Transactional
+	public ImgReqResDto findByGiftId(Long giftId) {
+		ImgReqResDto imgDto = imgRepository.findByGiftId(giftId);
+		
+		return imgDto;
+	}
 	
 	@Transactional(readOnly = true)
 	public List<ListResponseDto> findAllDesc() {

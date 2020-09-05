@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ImgSaveRequestDto {
+public class ImgReqResDto {
 	
 	private Long imgId;
 	private Long giftId;
@@ -19,13 +19,21 @@ public class ImgSaveRequestDto {
 	private Long fileSize;
 	
 	@Builder
-	public ImgSaveRequestDto(Long imgId, Long giftId, String originalFileName, 
+	public ImgReqResDto(Long imgId, Long giftId, String originalFileName, 
 			String storedFilePath, Long fileSize) {
 		this.imgId = imgId;
 		this.giftId = giftId;
 		this.originalFileName = originalFileName;
 		this.storedFilePath = storedFilePath;
 		this.fileSize = fileSize;
+	}
+	
+	public ImgReqResDto(ImgEntity imgEntity) {
+		this.imgId = imgEntity.getImgId();
+		this.giftId = imgEntity.getGiftId();
+		this.originalFileName = imgEntity.getOriginalFileName();
+		this.storedFilePath = imgEntity.getStoredFilePath();
+		this.fileSize = imgEntity.getFileSize();
 	}
 	
 	public ImgEntity toImgEntity() {

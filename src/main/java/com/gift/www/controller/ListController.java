@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.gift.www.dto.ImgReqResDto;
 import com.gift.www.dto.ListResponseDto;
 import com.gift.www.dto.ListSaveRequestDto;
 import com.gift.www.service.ListService;
@@ -47,7 +48,10 @@ public class ListController {
 	@GetMapping("/gift/detail/{giftId}")
 	public String giftDetail(@PathVariable Long giftId, Model model) {
 		ListResponseDto dto = listService.findById(giftId);
+		ImgReqResDto imgDto = listService.findByGiftId(giftId);
+		
 		model.addAttribute("giftList", dto);
+		model.addAttribute("giftImg", imgDto);
 		return "listDetail";
 	}
 	//조회

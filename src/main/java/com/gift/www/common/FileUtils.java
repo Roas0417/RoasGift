@@ -11,17 +11,17 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.gift.www.dto.ImgSaveRequestDto;
+import com.gift.www.dto.ImgReqResDto;
 
 @Component
 public class FileUtils {
 
-	public ImgSaveRequestDto parseFileImg(Long giftId, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception{
+	public ImgReqResDto parseFileImg(Long giftId, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception{
         if(ObjectUtils.isEmpty(multipartHttpServletRequest)){
             return null;
         }
 
-        ImgSaveRequestDto fileList = new ImgSaveRequestDto();
+        ImgReqResDto fileList = new ImgReqResDto();
 
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMdd");
         ZonedDateTime current = ZonedDateTime.now();
@@ -61,7 +61,7 @@ public class FileUtils {
 
                     newFileName = Long.toString(System.nanoTime()) + originalFileExtension;
                     
-                    fileList = ImgSaveRequestDto.builder()
+                    fileList = ImgReqResDto.builder()
                             .giftId(giftId)
                             .originalFileName(multipartFile.getOriginalFilename())
                             .storedFilePath(tPath + "/" + newFileName)
