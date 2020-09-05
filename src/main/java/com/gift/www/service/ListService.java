@@ -6,11 +6,16 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.gift.www.common.FileUtils;
+import com.gift.www.dto.ImgSaveRequestDto;
 import com.gift.www.dto.ListResponseDto;
 import com.gift.www.dto.ListSaveRequestDto;
 import com.gift.www.dto.ListUpdateRequestDto;
 import com.gift.www.entity.ListEntity;
+import com.gift.www.repository.ImgRepository;
 import com.gift.www.repository.ListRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -20,10 +25,22 @@ import lombok.RequiredArgsConstructor;
 public class ListService {
 	
 	private final ListRepository listRepository;
+	private final ImgRepository imgRepository;
+	private final FileUtils fileUtils;
 	
 	@Transactional
-	public Long save(ListSaveRequestDto requestDto) {
-		return listRepository.save(requestDto.toEntity()).getGiftId();
+	public void save(ListSaveRequestDto requestDto, MultipartHttpServletRequest multipartHttpServletRequest) 
+	throws Exception {
+		
+		
+		Long giftId = listRepository.save(requestDto.toEntity()).getGiftId();
+		ImgSaveRequestDto dto = fileUtils.parseFileImg(giftId, multipartHttpServletRequest);
+		if(ObjectUtils.isEmpty(dto) == false) {
+			imgRepository.save(dto.toImgEntity());
+		}
+		
+		//dto를 list로  받아오기
+			
 	}
 	//등록
 	

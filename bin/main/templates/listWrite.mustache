@@ -37,7 +37,7 @@
                         <h2>상품 등록</h2>
                     </div>
                     <div class="comment-form">
-                    <form>
+                    <form method="POST" action="/gift/save" id="listForm" enctype="multipart/form-data">
                     <div class="mt-10">
 									<input type="text" name="giftName" id="giftName" placeholder="상품명"
 										onfocus="this.placeholder = ''" onblur="this.placeholder = '상품명'" required
@@ -50,7 +50,7 @@
 								</div>
                     <div class="input-group-icon mt-10">
 						<div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
-						<div class="form-select" id="default-select"">
+						<div class="form-select" id="default-select">
 						<select name="giftCategory" id="giftCategory">
 							<option value=" 0">-카테고리-</option>
 							<option value="한식">1. 한식</option>
@@ -72,13 +72,15 @@
 				<div class="form-group">
                    <textarea class="form-control w-100" name="giftContent" id="giftContent" cols="30" rows="30"
                     placeholder="Contents"></textarea>
+                    <input type="file" id="files" name="files" multiple="multiple">
                 </div>
                    </div>
-                   </form>
+                  <!-- </form> -->
                     <div class="form-group">
-                           <button type="button" id="btn-save" class="button button-contactForm btn_1 boxed-btn">submit</button>
+                           <button type="submit" id="btn-save" class="button button-contactForm btn_1 boxed-btn">submit</button>
                            <button type="button" onclick="location.href='/gift/list'" class="button button-contactForm btn_1 boxed-btn">prev</button>
-                        </div>            
+                        </div>   
+                        </form>         
                   </div>
                 </div>
                 

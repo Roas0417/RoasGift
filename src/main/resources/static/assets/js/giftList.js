@@ -1,9 +1,10 @@
 var main = {
     init : function () {
         var _this = this;
-        $('#btn-save').on('click', function () {
+        /*$('#btn-save').on('click', function () {
             _this.save();
-        });
+			_this.saveImg();
+        });*/
 
 		$('#btn-update').on('click', function () {
             _this.update();
@@ -14,7 +15,7 @@ var main = {
         });
 
     },
-    save : function () {
+    /*save : function () {
         var data = {
             giftName: $('#giftName').val(),
             giftBrand: $('#giftBrand').val(),
@@ -23,7 +24,7 @@ var main = {
             giftContent: $('#giftContent').val()
         };
 
-        $.ajax({
+		$.ajax({
             type: 'POST',
             url: '/api/v1/gift',
             dataType: 'json',
@@ -31,12 +32,31 @@ var main = {
             data: JSON.stringify(data)
         }).done(function() {
             alert('글이 등록되었습니다.');
-            window.location.href = '/gift/list';
+            window.location.href = '/';
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
-	},
-	
+    },*/
+
+	/*saveImg : function () {
+		
+		var form = $('#listForm')[0];
+		var formData = new FormData(form);
+		formData.append("img", $("#imgs")[0].files[0]);
+		//var file = $("#imgs")[0].files[0];
+		
+		$.ajax({
+            type: 'POST',
+            url: '/api/v1/gift',
+			enctype: 'multipart/form-data',
+			processData: false, 
+			contentType: false,
+			data : formData*/
+			/*success:function(json) {
+                var obj = JSON.parse(json);
+			}*/
+			
+		
 	update : function () {
         var data = {
             giftName: $('#giftName').val(),

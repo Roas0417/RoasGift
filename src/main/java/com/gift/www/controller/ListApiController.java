@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.gift.www.dto.ListResponseDto;
 import com.gift.www.dto.ListSaveRequestDto;
@@ -23,10 +24,11 @@ public class ListApiController {
 
 	private final ListService listService;
 	
-	@PostMapping("/api/v1/gift")
-	public Long save(@RequestBody ListSaveRequestDto requestDto) {
-		return listService.save(requestDto);
-	}
+	/*@PostMapping("/api/v1/gift")
+	public Long save(@RequestBody ListSaveRequestDto requestDto, MultipartHttpServletRequest 
+			multipartHttpServletRequest) throws Exception {
+		return listService.save(requestDto, multipartHttpServletRequest);
+	}*/
 	//글 입력
 	
 	@PutMapping("/api/v1/gift/{giftId}")
