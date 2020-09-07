@@ -104,9 +104,11 @@ public class ListService {
 	//삭제
 	
 	@Transactional(readOnly = true)
-	public List<ListResponseDto> findAllSearch(String keyword, String category) {
+	public List<ListResponseDto> findAllSearch(String keyword, String category, int startIndex, int pageSize) {
 		
-		return listRepository.findAllSearch(keyword, category).stream()
+		Pageable pageable = PageRequest.of(startIndex, pageSize);
+		
+		return listRepository.findAllSearch(keyword, category, pageable).stream()
 				.map(ListResponseDto::new)
 				.collect(Collectors.toList());
 	}

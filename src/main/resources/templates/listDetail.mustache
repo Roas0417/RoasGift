@@ -49,9 +49,11 @@
                         <h2>상품상세설명</h2>
                     </div>
                     <div class="gallery-img">
+                        {{#giftImg}}
                         <div class="row">
-                                <img src="{{giftImg.storedFilePath}}" class="mb-30">
+                                <img src="{{storedFilePath}}" class="mb-30">
                         </div>
+                        {{/giftImg}}
                     </div>
                     <div class="directory-cap mb-40">
                         {{giftList.giftContent}}

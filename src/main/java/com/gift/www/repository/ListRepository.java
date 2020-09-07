@@ -16,7 +16,7 @@ public interface ListRepository extends JpaRepository<ListEntity, Long>{
 	List<ListEntity> findAllDesc(Pageable pageable);
 	
 	@Query("select p from ListEntity p where (p.giftName like %:keyword% OR p.giftBrand like %:keyword%) AND p.giftCategory like %:category% order by p.giftName desc")
-	List<ListEntity> findAllSearch(@Param("keyword") String keyword, @Param("category") String category);
+	List<ListEntity> findAllSearch(@Param("keyword") String keyword, @Param("category") String category, Pageable pageable);
 	
 	@Query("select count(*) from ListEntity")
 	int findAllCnt();

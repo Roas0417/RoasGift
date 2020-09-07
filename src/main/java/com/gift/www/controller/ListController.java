@@ -2,6 +2,7 @@ package com.gift.www.controller;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Controller;
 
 
@@ -16,7 +17,6 @@ import com.gift.www.dto.ImgReqResDto;
 import com.gift.www.dto.ListResponseDto;
 import com.gift.www.dto.ListSaveRequestDto;
 import com.gift.www.pagination.ListPagination;
-import com.gift.www.repository.ListRepository;
 import com.gift.www.service.ListService;
 
 import lombok.RequiredArgsConstructor;
@@ -90,8 +90,22 @@ public class ListController {
 	//글 생성페이지
 	
 	@GetMapping("/gift/search")
-	public String findByKeyword(@RequestParam String keyword, @RequestParam String category, Model model) {
-		model.addAttribute("listAll", listService.findAllSearch(keyword, category));
+	public String findByKeyword(@RequestParam String keyword, @RequestParam String category, 
+			@RequestParam(defaultValue = "1") int page, Model model) {
+		
+		// 총 게시물 수 
+	    int totalListCnt = listService.findAllCnt();
+	    
+	    // 생성인자로  총 게시물 수, 현재 페이지를 전달
+	    ListPagination pagination = new ListPagination(totalListCnt, page);
+	    
+	    // DB select start index
+	    int startIndex = pagination.getStartIndex();
+	    // 페이지 당 보여지는 게시글의 최대 개수
+	    int pageSize = pagination.getPageSize();
+	    
+		model.addAttribute("listAll", listService.findAllSearch(keyword, category, startIndex, pageSize));
+		model.addAttribute("pagination", pagination);
 		return "listing";
 	}
 	//검색 목록 조회
