@@ -1,5 +1,7 @@
 package com.gift.www.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 
 
@@ -13,6 +15,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.gift.www.dto.ImgReqResDto;
 import com.gift.www.dto.ListResponseDto;
 import com.gift.www.dto.ListSaveRequestDto;
+import com.gift.www.pagination.ListPagination;
+import com.gift.www.repository.ListRepository;
 import com.gift.www.service.ListService;
 
 import lombok.RequiredArgsConstructor;
@@ -38,8 +42,23 @@ public class ListController {
 	//글 입력
 	
 	@GetMapping("/gift/list")
-	public String giftList(Model model) {
-		model.addAttribute("listAll", listService.findAllDesc());
+	public String giftList(Model model, @RequestParam(defaultValue = "1") int page) {
+		
+		// 총 게시물 수 
+	    int totalListCnt = listService.findAllCnt();
+	    
+	    // 생성인자로  총 게시물 수, 현재 페이지를 전달
+	    ListPagination pagination = new ListPagination(totalListCnt, page);
+	    
+	    // DB select start index
+	    int startIndex = pagination.getStartIndex();
+	    // 페이지 당 보여지는 게시글의 최대 개수
+	    int pageSize = pagination.getPageSize();
+	    
+	    //List<ListResponseDto> PageDto = listService.findListPaging(startIndex, pageSize);
+		
+		model.addAttribute("listAll", listService.findAllDesc(startIndex, pageSize));
+		model.addAttribute("pagination", pagination);
 		
 		return "listing";
 	}

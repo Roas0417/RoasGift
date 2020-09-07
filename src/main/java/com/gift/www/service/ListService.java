@@ -4,6 +4,8 @@ import java.util.List;
 
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
@@ -77,12 +79,19 @@ public class ListService {
 	}
 	
 	@Transactional(readOnly = true)
-	public List<ListResponseDto> findAllDesc() {
-		return listRepository.findAllDesc().stream()
+	public List<ListResponseDto> findAllDesc(int startIndex, int pageSize){
+		Pageable pageable = PageRequest.of(startIndex, pageSize);
+
+		return listRepository.findAllDesc(pageable).stream()
 				.map(ListResponseDto::new)
 				.collect(Collectors.toList());
 	}
 	//목록
+	
+	@Transactional
+	public int findAllCnt() {
+		return listRepository.findAllCnt();
+	}
 	
 	@Transactional
 	public void delete(Long giftId) {
