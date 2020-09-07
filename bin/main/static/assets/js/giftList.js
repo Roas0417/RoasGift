@@ -1,9 +1,9 @@
 var main = {
     init : function () {
         var _this = this;
-        /*$('#btn-save').on('click', function () {
+        $('#btn-save').on('click', function () {
             _this.save();
-        });*/
+        });
 
 		$('#btn-update').on('click', function () {
             _this.update();
@@ -36,7 +36,7 @@ var main = {
         });
     },*/
 
-	//save : function () {
+	save : function () {
 		
 		//var form = $('#listForm')[0];
 		/*var formData = new FormData();
@@ -47,7 +47,7 @@ var main = {
 		formData.append("giftPrice", $("input[name=giftPrice]").val());
 		formData.append("giftContent", $("textarea[name=giftContent]").text());*/
 		
-		/*var formData = new FormData(document.getElementById("listForm"));
+		var formData = new FormData(document.getElementById("listForm"));
 
 		$.ajax({
             type: 'POST',
@@ -55,17 +55,14 @@ var main = {
 			//enctype: 'multipart/form-data',
 			processData: false, 
 			contentType: false,
-			data : formData,
-			success:function(formData) {
-                JSON.stringify(formData);
-			})
+			data : formData
 			}).done(function() {
             alert('글이 등록되었습니다.');
             window.location.href = '/gift/list';
         	}).fail(function (error) {
             alert(JSON.stringify(error));
         	});
-		},*/
+		},
 			
 		
 	update : function () {

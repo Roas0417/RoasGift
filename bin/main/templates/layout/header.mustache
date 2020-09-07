@@ -67,6 +67,7 @@
                         <div class="header-btns d-none d-lg-block f-right">
                             {{#userEmail}}
 				                <font color=white>Logged in as : <span id="username">{{nickname}} / {{userEmail}}  <img src="{{thumbnail_image}}" width="50" height="50"/></span></font>  
+				                <input type="hidden" id="userId" value="{{userId}}">
 				                <a href="/logout" class="btn btn-info active" role="button">Logout</a>
 				            {{/userEmail}}
                             {{^userEmail}}

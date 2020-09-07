@@ -3,6 +3,9 @@ package com.gift.www.entity;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 
 import javax.persistence.Entity;
@@ -61,7 +64,11 @@ public class ListEntity extends BaseTimeEntity{
 	@JoinColumn(name="giftId")
 	private Collection<ImgEntity> fileList;
 	
-	
+	//listEntity라는 테이블 통해 연결.
+	@OneToMany(mappedBy = "listEntity")
+    private List<WishList> wishList = new ArrayList<>();
+
+
 	@Builder
 	//빌더 패턴 클래스 생성
 	//필드 값 변경의 목적과 의도를 명확히 하기 위함

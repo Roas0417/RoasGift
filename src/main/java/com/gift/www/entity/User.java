@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long userId;
 
 	@Column(nullable = false)
 	private String name;
@@ -21,24 +21,24 @@ public class User {
 	private String email;
 
 	@Column
-	private String picture;
+	private String thumbnail_image;
 
 	@Enumerated(EnumType.STRING)
 	@Column
 	private Role role;
 
 	@Builder
-	public User(String name, String email, String picture, Role role) {
+	public User(String name, String email, String thumbnail_image, Role role) {
 		this.name = name;
 		this.email = email;
-		this.picture = picture;
+		this.thumbnail_image = thumbnail_image;
 		this.role = role;
 
 	}
 
-	public User update(String name, String picture) {
+	public User update(String name, String thumbnail_image) {
 		this.name = name;
-		this.picture = picture;
+		this.thumbnail_image = thumbnail_image;
 
 		return this;
 
