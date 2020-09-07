@@ -18,63 +18,56 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Service
 public class ListService {
-	
+
 	private final ListRepository listRepository;
-	
+
+	// 등록
 	@Transactional
 	public Long save(ListSaveRequestDto requestDto) {
 		return listRepository.save(requestDto.toEntity()).getGiftId();
 	}
-	//등록
-	
+
+	// 수정
 	@Transactional
 	public Long update(Long giftId, ListUpdateRequestDto requestDto) {
 		ListEntity listEntity = listRepository.findById(giftId)
-				.orElseThrow(() -> new 
-						IllegalArgumentException("해당 게시글이 없습니다. id = " + giftId));
-		
-		listEntity.update(requestDto.getGiftName(), requestDto.getGiftBrand(), 
-				requestDto.getGiftCategory(), requestDto.getGiftPrice(), 
-				requestDto.getGiftSold(), requestDto.getGiftContent());
-		
+				.orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id = " + giftId));
+
+		listEntity.update(requestDto.getGiftName(), requestDto.getGiftBrand(), requestDto.getGiftCategory(),
+				requestDto.getGiftPrice(), requestDto.getGiftSold(), requestDto.getGiftContent());
+
 		return giftId;
 	}
-	//수정
-	
+
+	// 조회
 	@Transactional
 	public ListResponseDto findById(Long id) {
 		ListEntity listEntity = listRepository.findById(id)
-				.orElseThrow(() -> new 
-						IllegalArgumentException("해당 게시글이 없습니다 id = " + id));
-		
+				.orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다 id = " + id));
+
 		return new ListResponseDto(listEntity);
 	}
-	//조회
-	
+
+	// 목록
 	@Transactional(readOnly = true)
 	public List<ListResponseDto> findAllDesc(Long userId) {
-		return listRepository.findAllDesc(userId).stream()
-				.map(ListResponseDto::new)
-				.collect(Collectors.toList());
+		return listRepository.findAllDesc(userId).stream().map(ListResponseDto::new).collect(Collectors.toList());
 	}
-	//목록
-	
-	
+
+	// 삭제
 	@Transactional
 	public void delete(Long giftId) {
 		ListEntity listEntity = listRepository.findById(giftId)
-				.orElseThrow(() -> new 
-						IllegalArgumentException("해당 게시글이 없습니다. id = " + giftId));
-		
+				.orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id = " + giftId));
+
 		listRepository.delete(listEntity);
 	}
-	//삭제
-	
+
+	// 검색
 	@Transactional(readOnly = true)
-	public List<ListResponseDto> findAllSearch(String keyword, String category) {
-		
-		return listRepository.findAllSearch(keyword, category).stream()
-				.map(ListResponseDto::new)
+	public List<ListResponseDto> findAllSearch(Long userId, String keyword, String category) {
+
+		return listRepository.findAllSearch(userId, keyword, category).stream().map(ListResponseDto::new)
 				.collect(Collectors.toList());
 	}
 }

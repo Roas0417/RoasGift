@@ -31,5 +31,6 @@ user_id INT,
   PRIMARY KEY (wish_list_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
-gift_id INT,
 drop table wish_list;
+
+
