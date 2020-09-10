@@ -171,7 +171,7 @@
                                 <div class="properties properties2 mb-30">
                                     <div class="properties__card">
                                         <div class="properties__img overlay1">
-                                            <a href="#"><img src="/assets/img/gallery/properties3.png" alt=""></a>
+                                            <a href="/gift/detail/{{giftId}}"><img src="/assets/img/gallery/{{giftCategory}}.png" alt=""></a>
                                             <div class="img-text">
                                                 <span>{{giftSold}}&nbsp;sold</span>
                                             </div>
@@ -227,9 +227,9 @@
                                     <nav aria-label="Page navigation example">
                                         <ul class="pagination justify-content-start " id="myDIV">
                                             <li class="page-item"><a class="page-link" href="{{pagination.nextBlock}}"><span class="ti-angle-left"></span></a></li>
-                                            <li class="page-item"><a class="page-link" href="#">{{startPage}}</a></li>
+                                            <li class="page-item"><a class="page-link" href="{{startPage}}">{{startPage}}</a></li>
                                             <!-- <li class="page-item active"><a class="page-link" href="{{pagination.page}}">{{page}}</a></li> -->
-                                            <li class="page-item"><a class="page-link" href="#">{{endPage}}</a></li>
+                                            <li class="page-item"><a class="page-link" href="{{endPage}}">{{endPage}}</a></li>
                                             <li class="page-item"><a class="page-link" href="{{pagination.nextBlock}}"><span class="ti-angle-right"></span></a></li>
                                         </ul>
                                     </nav>
@@ -243,6 +243,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <!-- listing-area Area End -->
 
