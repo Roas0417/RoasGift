@@ -98,4 +98,9 @@ public class ListEntity extends BaseTimeEntity{
 		this.giftSold = giftSold;
 		this.giftContent = giftContent;
 	}
+	
+	// transactional로 사용되면서 판매수 증가.
+	public void sold() {
+		this.giftSold = this.giftSold + 1;
+	}
 }
