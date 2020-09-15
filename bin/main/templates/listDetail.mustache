@@ -60,11 +60,17 @@
                         
                     </div>
                     <form>
+                    <!-- 결제를 위한 값. -->
                     <input type="hidden" id="giftId" value="{{giftList.giftId}}">
+                    <input type="hidden" id="giftPrice" value="{{giftList.giftPrice}}">
+                    <input type="hidden" id="giftBrand" value="{{giftList.giftBrand}}">
+                    <input type="hidden" id="giftName" value="{{giftList.giftName}}">
                     <div class="form-group">
                            <button type="button" onclick="location.href='/gift/list'" class="button button-contactForm btn_1 boxed-btn">prev</button>
                            <button type="button" onclick="location.href='/gift/update/{{giftId}}'" class="button button-contactForm btn_1 boxed-btn">edit</button>
                            <button type="button" id="btn-delete" class="button button-contactForm btn_1 boxed-btn">del</button>
+                          <!--  결제 시도중. -->
+                          <button type="button" id="btn-bay-now" class="button button-contactForm btn_1 boxed-btn">pay</button> 
                         </div>
                         </form>
                 </div>

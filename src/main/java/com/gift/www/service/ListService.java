@@ -30,22 +30,20 @@ public class ListService {
 	private final ListRepository listRepository;
 	private final ImgRepository imgRepository;
 	private final FileUtils fileUtils;
-	
 
 	// 등록
 	@Transactional
-	public void save(ListSaveRequestDto requestDto, MultipartHttpServletRequest multipartHttpServletRequest) 
-	throws Exception {
-		
-		
+	public void save(ListSaveRequestDto requestDto, MultipartHttpServletRequest multipartHttpServletRequest)
+			throws Exception {
+
 		Long giftId = listRepository.save(requestDto.toEntity()).getGiftId();
 		ImgReqResDto dto = fileUtils.parseFileImg(giftId, multipartHttpServletRequest);
-		if(ObjectUtils.isEmpty(dto) == false) {
+		
+		if (ObjectUtils.isEmpty(dto) == false) {
 			imgRepository.save(dto.toImgEntity());
 		}
-		
-		//dto를 list로  받아오기
-			
+		// dto를 list로 받아오기
+
 	}
 
 	// 수정
@@ -60,6 +58,17 @@ public class ListService {
 		return giftId;
 	}
 
+	// 판매
+	@Transactional
+	public Long sold(Long giftId) {
+		ListEntity listEntity = listRepository.findById(giftId)
+				.orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id = " + giftId));
+
+		listEntity.sold();
+
+		return giftId;
+	}
+
 	// 조회
 	@Transactional
 	public ListResponseDto findById(Long id) {
@@ -68,30 +77,31 @@ public class ListService {
 
 		return new ListResponseDto(listEntity);
 	}
-	//조회
-	
+	// 조회
+
 	@Transactional
 	public ImgReqResDto findByGiftId(Long giftId) {
 		ImgReqResDto imgDto = imgRepository.findByGiftId(giftId);
-		
+
 		return imgDto;
 	}
-	
-	/*@Transactional(readOnly = true)
-	public List<ListResponseDto> findAllDesc(int startIndex, int pageSize){
-		Pageable pageable = PageRequest.of(startIndex, pageSize);
 
-		return listRepository.findAllDesc(pageable).stream()
-				.map(ListResponseDto::new)
-				.collect(Collectors.toList());*/
+	/*
+	 * @Transactional(readOnly = true) public List<ListResponseDto> findAllDesc(int
+	 * startIndex, int pageSize){ Pageable pageable = PageRequest.of(startIndex,
+	 * pageSize);
+	 * 
+	 * return listRepository.findAllDesc(pageable).stream()
+	 * .map(ListResponseDto::new) .collect(Collectors.toList());
+	 */
 
 	// 목록
 	@Transactional(readOnly = true)
 	public List<ListResponseDto> findAllDesc(Long userId, int startIndex, int pageSize) {
 		Pageable pageable = PageRequest.of(startIndex, pageSize);
-		
-		return listRepository.findAllDesc(userId, pageable).
-				stream().map(ListResponseDto::new).collect(Collectors.toList());
+
+		return listRepository.findAllDesc(userId, pageable).stream().map(ListResponseDto::new)
+				.collect(Collectors.toList());
 	}
 
 	// 삭제
@@ -99,12 +109,12 @@ public class ListService {
 	public int findAllCnt() {
 		return listRepository.findAllCnt();
 	}
-	
+
 	@Transactional
 	public int findSearchCnt(String keyword, String category) {
 		return listRepository.findSearchCnt(keyword, category);
 	}
-	
+
 	@Transactional
 	public void delete(Long giftId) {
 		ListEntity listEntity = listRepository.findById(giftId)
@@ -115,18 +125,20 @@ public class ListService {
 
 	// 검색
 	@Transactional(readOnly = true)
-	public List<ListResponseDto> findAllSearch(Long userId, String keyword, String category, int startIndex, int pageSize) {
-		
+	public List<ListResponseDto> findAllSearch(Long userId, String keyword, String category, int startIndex,
+			int pageSize) {
+
 		Pageable pageable = PageRequest.of(startIndex, pageSize);
-		
-		return listRepository.findAllSearch(userId, keyword, category, pageable).stream()
-				.map(ListResponseDto::new)
+
+		return listRepository.findAllSearch(userId, keyword, category, pageable).stream().map(ListResponseDto::new)
 				.collect(Collectors.toList());
 	}
 
-		/*public List<ListResponseDto> findAllSearch(Long userId, String keyword, String category) {
-
-		return listRepository.findAllSearch(userId, keyword, category).stream().map(ListResponseDto::new)
-				.collect(Collectors.toList());
-	}*/
+	/*
+	 * public List<ListResponseDto> findAllSearch(Long userId, String keyword,
+	 * String category) {
+	 * 
+	 * return listRepository.findAllSearch(userId, keyword,
+	 * category).stream().map(ListResponseDto::new) .collect(Collectors.toList()); }
+	 */
 }

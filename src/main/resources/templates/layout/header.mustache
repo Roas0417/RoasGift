@@ -68,6 +68,8 @@
                             {{#userEmail}}
 				                <font color=white>Logged in as : <span id="username">{{nickname}} / {{userEmail}}  <img src="{{thumbnail_image}}" width="50" height="50"/></span></font>  
 				                <input type="hidden" id="userId" value="{{userId}}">
+				                <input type="hidden" id="nickname" value="{{nickname}}">
+				                <input type="hidden" id="userEmail" value="{{userEmail}}">
 				                <a href="/logout" class="btn btn-info active" role="button">Logout</a>
 				            {{/userEmail}}
                             {{^userEmail}}
