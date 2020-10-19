@@ -18,4 +18,5 @@
 - Create, Read, Update, Delete
 - Image upload
 - OAuth 2.0을 이용한 카카오톡 로그인
-- 
+- 아임포트 API를 이용한 카카오톡 결제
+- Ajax를 이용한 즐겨찾기 추가 및 제거
